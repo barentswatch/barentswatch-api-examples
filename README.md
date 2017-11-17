@@ -1,17 +1,19 @@
 # Barentswatch-api-examples
 
 This is a set of python files that demonstrate the use of Barentswatch API.
+The official API documentation is her: https://code.barentswatch.net/wiki/display/BWOPEN/API-Documentation
 
-The purpose of this project is to have som example files for support request for future users of the Barentswatch API.
+
+The purpose of this project is to have some example files for support request for future users of the Barentswatch API.
 
 file |purpose
 ------------- | -------------
-Crendentials.py | config file to hold the credentials to autenticate with
-autentication.py | demonstrate how to get an autorazion token
-fishelse_weeksummary.py| Autentication and use the token in an simple request
-fiskinfo_fishingfacilities| Autentication and usage of the token to get fising facilities
+Crendentials.py | config file to hold the credentials to authenticate  with
+autentication.py | demonstrate how to get an authorization  token
+fishelse_weeksummary.py| Authentication  and use the token in an simple request
+fiskinfo_fishingfacilities| Authentication  and usage of the token to get fishing  facilities
 
 
-
-
+Information on how to obtain an valid user and permission
+https://www.barentswatch.no/om/api-vilkar
 
