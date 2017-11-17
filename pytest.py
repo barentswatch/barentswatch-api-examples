@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import requests
-import credentials
+from credentials_thh import config
 
 
 def get_token():
