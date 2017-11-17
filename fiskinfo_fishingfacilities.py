@@ -1,3 +1,14 @@
+'''
+This is an example illustrating ta simple request with token authentication
+
+For a guide how to obtain access and credentials go to : https://www.barentswatch.no/om/api-vilkar
+The request demonstrated here is documented at this page: https://code.barentswatch.net/wiki/display/BWOPEN/FiskInfo
+
+With a token and a valid permit this API have a response with fishing facilities including ship info
+Without a token and valid permit the API have a respond with anonyms fishing facilities without ship info
+
+ '''
+
 import requests
 import json
 from pprint import pprint
@@ -20,6 +31,19 @@ def get_token():
 
 
 def get_fishingfacilities(token):
+	"""
+    Get fishing facilities with ship indentifiers
+
+    Parameters
+    ----------
+    token : token json object
+
+    Returns
+    -------
+    jsonobject
+        json object with all current fising facilities with ship indentifiers
+
+    """
 	url = "https://www.barentswatch.no/api/v1/geodata/download/fishingfacility/?format=JSON"
 	token2 = token['access_token'].encode("ascii", "ignore")
 
