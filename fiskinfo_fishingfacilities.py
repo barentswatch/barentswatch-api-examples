@@ -13,7 +13,7 @@ import requests
 import json
 from pprint import pprint
 import time
-from credentials import config
+from credentials import config #Import config with username/password        config={'api_user': '', 'api_password': ''}
 
 token ={}
 
