@@ -19,9 +19,9 @@ def get_token():
 
 def get_week_summary(token, year, week):
 	url = "https://www.barentswatch.no/api/v1/geodata/fishhealth/locality/"+year+"/"+week
-	token2 = token['access_token'].encode("ascii", "ignore")
+	token_bearer = token['access_token'].encode("ascii", "ignore")
 	headers ={
-		'authorization': "Bearer " + token2,
+		'authorization': "Bearer " + token_bearer,
         'content-type': "application/json",
 	}
 
@@ -32,7 +32,7 @@ def get_week_summary(token, year, week):
 		return "Error"
 
 
-token = get_token();
+token = get_token()
 
 weeksummary= get_week_summary(token,"2017","45")
 pprint(weeksummary)
