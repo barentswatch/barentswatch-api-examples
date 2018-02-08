@@ -22,7 +22,7 @@ def get_token():
 		print "status: "+ str(req.status_code)
 		return req.json()
     else:
-		print "status: "+ req.status_code
+		print "status: "+ str(req.status_code)
 		return "Error"
 
  			
@@ -31,9 +31,12 @@ def get_token():
 token = get_token();
 
 print "***********"
-print "The complete token json object"
-#print 
-pprint(token)
-print "***********"
-print "The token Attribute that must be used in any further requests"
-pprint (token['access_token'])
+if token['access_token']:
+  print "The complete token json object"
+
+  pprint(token)
+  print "***********"
+  print "The token Attribute that must be used in any further requests"
+  pprint(token['access_token'])
+else:
+  print "No token received"
