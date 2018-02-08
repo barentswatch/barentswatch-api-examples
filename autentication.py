@@ -2,7 +2,7 @@
 import requests
 import json
 from pprint import pprint
-from credentials import config
+from credentials import config #Import config with username/password        config={'api_user': '',	'api_password': ''}
 
 token ={}
 
@@ -35,5 +35,5 @@ print "The complete token json object"
 #print 
 pprint(token)
 print "***********"
-print "The token variable that must be used in any further requests"
+print "The token Attribute that must be used in any further requests"
 pprint (token['access_token'])
