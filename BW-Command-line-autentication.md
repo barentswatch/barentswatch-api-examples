@@ -1,14 +1,16 @@
-#Barentswatch command-line examples
+# Barentswatch command-line examples
 
-##Curl
+## Curl
 Autenticate and fetch data with curl commands
 
-### First get your token.
+### 1. First get your token.
 This command autenticate and save the repons in a txt file
 
 ```bash
-curl -k -X POST -d 'grant_type=password&username=trond.hanssen@bouvet.no&' https://www.barentswatch.no/api/token -o token.txt
+curl -k -X POST -d 'grant_type=password&username=trond.hanssen@bouvet.no&password=$password' https://www.barentswatch.no/api/token -o token.txt
 ```
+Replace username with your own username and $password with you own password
+
 Content of token.txt:
 
 ```json
@@ -16,7 +18,7 @@ Content of token.txt:
 ```
 
 
-### then fetch data with autentication token
+### 2. Then fetch data with autentication token
 When you have your token you can use that to fetch data as autenticated user
 
 ```bash
@@ -24,7 +26,8 @@ curl -k -H 'Authorization: Bearer $access_token' https://www.barentswatch.no/api
 
 ```
 
-Replace $access_token with the value from json atribute withe same name from the first respons
+Replace $access_token with the value from json atribute sccess_token from the first json respons
+
 
 
 It is reqomended to autenticate and fetch data programatically.
