@@ -10,26 +10,25 @@ $dataPath="https://www.barentswatch.no/api/v1/geodata/download/fishingfacility/?
 
 
 getLogin() {
-    read -p "Please enter username (or empty for anonymous): " username
-    if [ -n "$username" ]; then
+    read -p "Please enter username: " username
+    read -p "Please enter reponame: " repo
+    reponame=${username}/${repo}
+    if [ -n "$username"  ]; then
         read -s -p "password: " password
         echo
     fi
 }
 
-getToken() {
-    #local reponame=$1
-    #local actions=$2
-    local headers
-    local response
+getBearerToken() {
+    local HEADERS
+    local RESPONSE
 
-    if [ -n "$username" ]; then
-        headers="Authorization: Basic $(echo -n "${username}:${password}" | base64)"
+    if [ -n "$username"  ]; then
+        HEADERS="Authorization: Basic $(echo -n "${username}:${password}" | base64)"
     fi
-
-    response=$(curl -s -H "$headers" "$tokenPath")
-
-    echo $response | jq '.token' | xargs echo
+    echo [+] Logging in
+    curl -s -H "$HEADERS" "$tokenPath" | jq '.token' -r > token.txt
+    echo [+] Got Bearer token
 }
 
 downloadData() {
@@ -38,11 +37,12 @@ downloadData() {
     local token=$(getToken)
 
     echo "Downloading Data"
-    time curl -L --progress-bar -H "Authorization: Bearer $token" "$dataPath" > download.json
+    time curl -L --progress-bar -H "Authorization: Bearer $(cat token.txt)" "$dataPath" > download.json
 }
 
-#getLogin
+getLogin
 #uploadBlob $reponame
+getBearerToken
 
 for i in {1..10}; do
     downloadData 
