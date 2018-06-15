@@ -14,9 +14,9 @@ orglist={}
 def get_token():
       req = requests.post("https://www.barentswatch.no/api/token",
             data={
-                  'grant_type': 'password',
-                  'username': config['api_user'],
-                  'password': config['api_password']
+                  'grant_type': 'client_credentials',
+                  'client_id': config['api_user'],
+                  'client_secret': config['api_password']
             },
             params={},
             headers={'content-type': 'application/x-www-form-urlencoded'})
