@@ -9,7 +9,8 @@ The purpose of this project is to have some example files for support request fo
 file |purpose
 ------------- | -------------
 Crendentials.py | config file to hold the credentials to authenticate  with
-autentication.py | demonstrate how to get an authorization  token
+autentication.py | demonstrate how to get an authorization  token with user/password (user Authorization)
+autentication_with_client_token.py| demonstrate how to get an authorization  token with client credentials (app Authorization)
 fishelse_weeksummary.py| Authentication  and use the token in an simple request
 fiskinfo_fishingfacilities| Authentication  and usage of the token to get fishing  facilities
 
