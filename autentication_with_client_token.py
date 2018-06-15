@@ -11,7 +11,7 @@ def get_client_token():
 
     req = requests.post("https://www.barentswatch.no/api/token",
             data={
-                  'grant_type': 'password',
+                  'grant_type': 'client_credentials',
                   'client_id': config['api_user'],
                   'client_secret': config['api_password']
             },
