@@ -11,7 +11,7 @@ file |purpose
 Crendentials.py | config file to hold the credentials to authenticate  with
 autentication.py | demonstrate how to get an authorization  token with user/password (user Authorization)
 autentication_with_client_token.py| demonstrate how to get an authorization  token with client credentials (app Authorization)
-fishelse_weeksummary.py| Authentication  and use the token in an simple request
+fishelse_weeksummary.py| Authentication  and use of the token in a simple request with fiskehelse
 fiskinfo_fishingfacilities| Authentication  and usage of the token to get fishing  facilities
 
 
