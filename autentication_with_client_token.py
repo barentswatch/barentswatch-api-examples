@@ -22,22 +22,27 @@ def get_client_token():
 		  print "status: "+ str(req.status_code)
 		  return req.json()
     else:
+      print "Error:" 
       print "status: "+ str(req.status_code)
-      print req.json()
-      return "Error"
+      return req.json()
+      
 
  			
       
 
 token = get_client_token()
-print token
+#print token
 print "***********"
 if 'access_token' in token:
-  print "The complete token json object"
-
-  pprint(token)
-  print "***********"
-  print "The token Attribute that must be used in any further requests"
+  print "Vaild autentication: The token Attribute that must be used in any further requests are:"
   pprint(token['access_token'])
+
+  
+  print "***********"
+  print "The complete token json object"
+  pprint(token)
+
 else:
-  print "No token received se error message above"
+  print "No token received. Error message:"
+  print token
+
