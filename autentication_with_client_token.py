@@ -11,7 +11,7 @@ def get_client_token():
 
     req = requests.post("https://www.barentswatch.no/api/token",
             data={
-                  'grant_type': 'client_credentials',
+                  'grant_type': 'password',
                   'client_id': config['api_user'],
                   'client_secret': config['api_password']
             },
@@ -19,19 +19,20 @@ def get_client_token():
             headers={'content-type': 'application/x-www-form-urlencoded'})
 
     if req.status_code == requests.codes.ok:
-		print "status: "+ str(req.status_code)
-		return req.json()
+		  print "status: "+ str(req.status_code)
+		  return req.json()
     else:
-		print "status: "+ str(req.status_code)
-		return "Error"
+      print "status: "+ str(req.status_code)
+      print req.json()
+      return "Error"
 
  			
       
 
 token = get_client_token()
-
+print token
 print "***********"
-if token['access_token']:
+if 'access_token' in token:
   print "The complete token json object"
 
   pprint(token)
@@ -39,4 +40,4 @@ if token['access_token']:
   print "The token Attribute that must be used in any further requests"
   pprint(token['access_token'])
 else:
-  print "No token received"
+  print "No token received se error message above"
