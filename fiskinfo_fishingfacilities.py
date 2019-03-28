@@ -1,5 +1,5 @@
 '''
-This is an example illustrating ta simple request with token authentication
+This is an example illustrating ta simple request with client token authentication
 
 For a guide how to obtain access and credentials go to : https://www.barentswatch.no/om/api-vilkar
 The request demonstrated here is documented at this page: https://code.barentswatch.net/wiki/display/BWOPEN/FiskInfo
@@ -20,43 +20,32 @@ token ={}
 def get_token():
       req = requests.post("https://www.barentswatch.no/api/token",
             data={
-                  'grant_type': 'password',
-                  'username': config['api_user'],
-                  'password': config['api_password']
+                  'grant_type': 'client_credentials',
+                  'client_id': config['api_user'],
+                  'client_secret': config['api_password']
             },
             params={},
             headers={'content-type': 'application/x-www-form-urlencoded'})
- 
-      return req.json()
+        
+      token = req.json()
+      #token = temp['access_token'].encode("ascii", "ignore")
+      return token
 
 
 def get_fishingfacilities(token):
-	"""
-    Get fishing facilities with ship indentifiers
-
-    Parameters
-    ----------
-    token : token json object
-
-    Returns
-    -------
-    jsonobject
-        json object with all current fising facilities with ship indentifiers
-
-    """
-	url = "https://www.barentswatch.no/api/v1/geodata/download/fishingfacility/?format=JSON"
-	token2 = token['access_token'].encode("ascii", "ignore")
-
-	headers ={
-		'authorization': "Bearer " + token2,
-        'content-type': "application/json",
+  
+  url = "https://www.barentswatch.no/api/v1/geodata/download/fishingfacility/?format=JSON"
+  access_token = token['access_token'].encode("ascii", "ignore")
+  headers ={
+    'authorization': "Bearer " + access_token,
+    'content-type': "application/json",
 	}
 
-	response = requests.get(url, headers=headers)
-	if response.status_code == requests.codes.ok:
-		return response.json()
-	else:
-		return "Error"
+  response = requests.get(url, headers=headers)
+  if response.status_code == requests.codes.ok:
+    return response.json()
+  else:
+    return "Error"
 
 
 token = get_token();
@@ -65,3 +54,4 @@ fishingfacility = get_fishingfacilities(token)
 timestr = time.strftime("%Y-%m-%d_%H%M%S")
 with open('fishingfacility_'+timestr+'.geojson', 'w') as outfile:
     json.dump(fishingfacility, outfile)
+
