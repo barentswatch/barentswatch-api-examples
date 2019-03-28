@@ -10,7 +10,7 @@ def get_token():
             data={
                   'grant_type': 'client_credentials',
                   'client_id': config['api_user'],
-                  'lient_secret': config['api_password']
+                  'client_secret': config['api_password']
             },
             params={},
             headers={'content-type': 'application/x-www-form-urlencoded'})
@@ -33,6 +33,7 @@ def get_week_summary(token, year, week):
 
 
 token = get_token()
+print token
 
 weeksummary= get_week_summary(token,"2017","45")
 pprint(weeksummary)
