@@ -18,7 +18,7 @@
                 "maximum": 2147483647
               },
               "name": {
-                "type": "string",
+                "type": "integer",
                 "description": "Site name (titlecase)"
               }
             }
@@ -96,7 +96,7 @@
                     "maximum": 9223372036854776000
                   },
                   "name": {
-                    "type": "integer",
+                    "type": "string",
                     "description": "Site name (titlecase)"
                   },
                   "hasReportedLice": {
