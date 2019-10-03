@@ -30,7 +30,4 @@ Replace $access_token with the value from json atribute sccess_token from the fi
 
 
 
-It is reqomended to autenticate and fetch data programatically.
-OAuth autentication is widely used and 
-Here is a list of  client libraries in many languages.
-https://oauth.net/code/
+Redskap fjernet
