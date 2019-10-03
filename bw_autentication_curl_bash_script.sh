@@ -1,12 +1,12 @@
 #!/bin/bash
 #bw_autentication_curl_bash_script
 #This is an example of autentication and fetching data as autenticated user.
-#The autenticated user has be autorized first.
+#The autenticated user has to be autorized first.
 
 # this script is not finish yet do not use before it is finish and tested
 
-$tokenPath="https://www.barentswatch.no/api/token"
-$dataPath="https://www.barentswatch.no/api/v1/geodata/download/fishingfacility/?format=JSON"
+$tokenPath "https://www.barentswatch.no/api/token"
+$dataPath "https://www.barentswatch.no/api/v1/geodata/download/fishingfacility/?format=JSON"
 
 
 getLogin() {
