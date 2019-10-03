@@ -8,7 +8,6 @@ token ={}
 
 
 def get_token():
-
     req = requests.post("https://www.barentswatch.no/api/token",
             data={
                   'grant_type': 'password',
@@ -19,11 +18,13 @@ def get_token():
             headers={'content-type': 'application/x-www-form-urlencoded'})
 
     if req.status_code == requests.codes.ok:
-		print "status: "+ str(req.status_code)
-		return req.json()
+		    print "status: "+ str(req.status_code)
+        print "Authentication successful"
+		    return req.json()
     else:
-		print "status: "+ str(req.status_code)
-		return "Error"
+      print "status: "+ str(req.status_code)
+      print req.json()
+      return "Error"
 
  			
       
@@ -31,7 +32,7 @@ def get_token():
 token = get_token();
 
 print "***********"
-if token['access_token']:
+if 'access_token' in token:
   print "The complete token json object"
 
   pprint(token)
@@ -39,4 +40,5 @@ if token['access_token']:
   print "The token Attribute that must be used in any further requests"
   pprint(token['access_token'])
 else:
-  print "No token received"
+  print "Failed, No token received"
+  pprint(token)
