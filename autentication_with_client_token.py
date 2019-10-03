@@ -2,7 +2,7 @@
 import requests
 import json
 from pprint import pprint
-from credentials import config #Import config with username/password        config={'api_user': '',	'api_password': ''}
+from credentials_thh import config #Import config with username/password        config={'api_user': '',	'api_password': ''}
 
 token ={}
 
