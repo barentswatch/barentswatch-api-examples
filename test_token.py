@@ -3,8 +3,8 @@ from pprint import pprint
 from authentication import get_token
 from credentials import config
 
-def get_week_summary(token, year, week):
-  url = f"{config['api_base_url']}/v1/geodata/fishhealth/locality/{year}/{week}"
+def make_sample_request(token):
+  url = f"{config['api_base_url']}/v1/sample/auth"
   headers ={
     'authorization': 'Bearer ' + token['access_token'],
     'content-type': 'application/json',
@@ -17,5 +17,7 @@ def get_week_summary(token, year, week):
 
 if __name__== "__main__":
   token = get_token()
-  weeksummary= get_week_summary(token,'2017','45')
-  pprint(weeksummary)
+  response = make_sample_request(token)
+  print('Request to the api was successful - authentication worked.')
+  pprint(response)
+
