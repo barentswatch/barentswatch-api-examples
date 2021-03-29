@@ -1,7 +1,7 @@
 # Barentswatch-api-examples
 
 This is a set of python files that demonstrate the use of Barentswatch API.
-The official API documentation is here: https://code.barentswatch.net/wiki/display/BWOPEN/API-Documentation
+The official API documentation is here: https://wiki.barentswatch.net/display/BO/Application+registration+and+authentication
 
 Python3 is required and the package requests needs to be installed:
 ``` bash
